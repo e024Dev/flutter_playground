@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_playground/src/pages/xylophone_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -18,7 +19,15 @@ class _HomePageState extends State<HomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            FilledButton(onPressed: () {}, child: Text('Xylophone')),
+            FilledButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => XylophonePage()),
+                );
+              },
+              child: Text('Xylophone'),
+            ),
             FilledButton(onPressed: () {}, child: Text('Funny Sounds')),
             FilledButton(onPressed: () {}, child: Text('Cotação Moedas')),
           ],
