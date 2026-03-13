@@ -11,7 +11,7 @@ class XylophonePage extends StatefulWidget {
 class _XylophonePageState extends State<XylophonePage> {
   final player = AudioPlayer();
   void playSound(int soundNumber) async {
-    await player.play(AssetSource('assets/audio/note$soundNumber.wav'));
+    await player.play(AssetSource('audio/note$soundNumber.wav'));
   }
 
   @override
