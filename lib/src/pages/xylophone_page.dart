@@ -67,7 +67,7 @@ class XylophoneButton extends StatelessWidget {
   const XylophoneButton({
     super.key,
     required this.color,
-    required this.soundNumber,
+    this.soundNumber = 1,
     required this.callBack,
   });
 
