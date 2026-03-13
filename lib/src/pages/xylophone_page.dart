@@ -1,3 +1,4 @@
+import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 
 class XylophonePage extends StatefulWidget {
@@ -8,6 +9,11 @@ class XylophonePage extends StatefulWidget {
 }
 
 class _XylophonePageState extends State<XylophonePage> {
+  final player = AudioPlayer();
+  void playSound(int soundNumber) async {
+    await player.play(AssetSource('assets/audio/note$soundNumber.wav'));
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -16,13 +22,41 @@ class _XylophonePageState extends State<XylophonePage> {
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          XylophoneButton(soundNumber: 1, color: Colors.red),
-          XylophoneButton(soundNumber: 2, color: Colors.orange),
-          XylophoneButton(soundNumber: 3, color: Colors.green),
-          XylophoneButton(soundNumber: 4, color: Colors.yellow),
-          XylophoneButton(soundNumber: 5, color: Colors.blue),
-          XylophoneButton(soundNumber: 6, color: Colors.purple),
-          XylophoneButton(soundNumber: 7, color: Colors.indigo),
+          XylophoneButton(
+            soundNumber: 1,
+            color: Colors.red,
+            callBack: playSound,
+          ),
+          XylophoneButton(
+            soundNumber: 2,
+            color: Colors.orange,
+            callBack: playSound,
+          ),
+          XylophoneButton(
+            soundNumber: 3,
+            color: Colors.green,
+            callBack: playSound,
+          ),
+          XylophoneButton(
+            soundNumber: 4,
+            color: Colors.yellow,
+            callBack: playSound,
+          ),
+          XylophoneButton(
+            soundNumber: 5,
+            color: Colors.blue,
+            callBack: playSound,
+          ),
+          XylophoneButton(
+            soundNumber: 6,
+            color: Colors.purple,
+            callBack: playSound,
+          ),
+          XylophoneButton(
+            soundNumber: 7,
+            color: Colors.indigo,
+            callBack: playSound,
+          ),
         ],
       ),
     );
@@ -34,10 +68,12 @@ class XylophoneButton extends StatelessWidget {
     super.key,
     required this.color,
     required this.soundNumber,
+    required this.callBack,
   });
 
   final MaterialColor color;
   final int soundNumber;
+  final Function(int) callBack;
 
   @override
   Widget build(BuildContext context) {
@@ -49,7 +85,9 @@ class XylophoneButton extends StatelessWidget {
         ),
         child: FilledButton(
           style: FilledButton.styleFrom(backgroundColor: color.shade400),
-          onPressed: () {},
+          onPressed: () {
+            callBack(soundNumber);
+          },
           child: null,
         ),
       ),
